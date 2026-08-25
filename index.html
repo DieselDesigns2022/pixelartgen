@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create a sharp pixel-art pattern from an image, entirely in your browser.">
+  <title>Pixel Art Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="page-header">
+      <p class="eyebrow">Phase A · Core Image Engine</p>
+      <h1>Pixel Art Generator</h1>
+      <p>Turn an image into a proportional, precisely sized pixel grid.</p>
+    </header>
+
+    <section class="upload-card" aria-labelledby="upload-title">
+      <div>
+        <h2 id="upload-title">Choose an image</h2>
+        <p class="privacy-note">Your image is processed directly in your browser and is not uploaded or stored.</p>
+      </div>
+      <label class="file-picker" for="image-upload">
+        <span>Upload image</span>
+        <input id="image-upload" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp">
+      </label>
+      <p class="file-help">PNG, JPG/JPEG, or WEBP · maximum 50 MB</p>
+      <div id="status" class="status is-empty" role="status" aria-live="polite">Choose an image to begin.</div>
+    </section>
+
+    <div id="generator" class="generator" hidden>
+      <section class="panel source-panel" aria-labelledby="original-title">
+        <h2 id="original-title">Original Image</h2>
+        <div class="original-frame">
+          <img id="original-preview" alt="Uploaded original image">
+        </div>
+
+        <fieldset class="width-controls">
+          <legend>Pixel Width</legend>
+          <div class="width-readout"><span>Current width</span> <output id="width-output" for="width-range width-number">30</output></div>
+          <label for="width-range">Adjust pixel width</label>
+          <input id="width-range" type="range" min="5" max="150" value="30" step="1">
+          <label for="width-number">Exact width</label>
+          <input id="width-number" type="number" inputmode="numeric" min="5" max="150" value="30" step="1">
+          <p class="control-help">Enter a whole number from 5 to 150.</p>
+        </fieldset>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="pattern-title">
+        <h2 id="pattern-title">Generated Pattern</h2>
+        <div class="canvas-frame">
+          <canvas id="pattern-canvas" aria-label="Generated pixel-art preview"></canvas>
+        </div>
+        <dl class="pattern-info">
+          <div><dt>Pattern Size:</dt><dd id="pattern-size">—</dd></div>
+          <div><dt>Total Pixels:</dt><dd id="total-pixels">—</dd></div>
+        </dl>
+      </section>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
